@@ -5,4 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="own_schmurveys">Your Schmurveys</string>
     <string name="all_schmurveys">All Schmurveys</string>
+    <string name="settings">Settings</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 </resources>
