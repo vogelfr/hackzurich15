@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".SingleSurveyActivity"
+            android:label="@string/title_activity_single_survey" >
+        </activity>
+        <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainActivity" >
