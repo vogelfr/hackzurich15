@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,7 +18,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        boolean firstTime = settings.getBoolean("firstTime", false);
+        boolean firstTime = settings.getBoolean("firstTime", true);
+        boolean loggedIn = settings.getBoolean("loggedIn", false);
+
+        Log.d("PREFS", "firstTime = " + Boolean.toString(firstTime));
+        Log.d("PREFS", "loggedIn = " + Boolean.toString(loggedIn));
+
+        if (!loggedIn) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("loggedIn", loggedIn);
+            intent.putExtra("firstTime", firstTime);
+            intent.putExtra("prefsName", PREFS_NAME);
+            startActivity(intent);
+        }
     }
 
     @Override
