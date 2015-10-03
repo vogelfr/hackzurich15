@@ -82,7 +82,7 @@ public class MultipleCheckActivity extends ListActivity {
 
         Log.d("QUESTION", "surveyIndex = " + String.valueOf(getSurveyIndex()));
         // TODO save sate of pressed options.
-        if (getSurveyIndex() + 1 != surveyListLength) { //next question exists.
+        if (getSurveyIndex()  != surveyListLength -1) { //next question exists.
             if (getTypeNextQuestion() == QuestionType.SINGLE_CHOICE ){
                 Log.d("QUESTION", "Next question is of type " + String.valueOf(QuestionType.SINGLE_CHOICE));
                 incrementSurveyIndex();
