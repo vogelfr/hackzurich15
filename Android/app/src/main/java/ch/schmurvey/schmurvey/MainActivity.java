@@ -1,6 +1,7 @@
 package ch.schmurvey.schmurvey;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,10 +10,15 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String PREFS_NAME = "PrefsFile";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        boolean firstTime = settings.getBoolean("firstTime", false);
     }
 
     @Override
@@ -31,14 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        }
+
+        if (id == R.id.add_survey) {
+            Intent intent = new Intent(this, SingleSurveyActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onSettingsButtonClick(View view) {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
     }
 }

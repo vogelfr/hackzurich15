@@ -5,8 +5,7 @@
         android:icon="@drawable/ic_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
-        app:showAsAction="always"
-        android:onClick="onSettingsButtonClick">
+        app:showAsAction="always">
     </item>
     <item android:id="@+id/add_survey"
         android:icon="@drawable/ic_add_box"
