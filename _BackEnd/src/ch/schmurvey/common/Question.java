@@ -10,5 +10,5 @@ public class Question {
     long surveyId;
     EmptySurvey emptySurvey;
     String questionText;
-    public List<AnswerOption> answerOptions;
+    List<AnswerOption> answerOptions;
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 public class EmptySurvey {
     long surveyId;
     User submitter;
-    public List<Question> questions;
+    List<Question> questions;
     /**
      * Is null if survey is not filled out.
      */
