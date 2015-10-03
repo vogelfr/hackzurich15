@@ -17,6 +17,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //create test Survey
+        Survey testSurvey = new Survey("Test Survey", "Mr Testie");
+        String[] answer1 = {"Yes", "No", "Not sure"};
+        String[] answer2 = {"blue", "not blue", "purple"};
+
+        testSurvey.addQuestion("Do you think this works", answer1 , false );
+        testSurvey.addQuestion("Favourite colors?", answer2, true);
+        ApplicationState.currentSurvey = testSurvey;
+        ApplicationState.setSurveyIndex(0);
+        /*
+        * end create test survey.
+        * */
+
+
+
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         boolean firstTime = settings.getBoolean("firstTime", true);
         boolean loggedIn = settings.getBoolean("loggedIn", false);
@@ -54,7 +69,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.add_survey) {
-            Intent intent = new Intent(this, SingleRadioActivity.class);
+            //TODO check next Question type
+            Intent intent;
+            if (ApplicationState.getTypeNextQuestion() == ApplicationState.QuestionType.MULTIPLE_CHOICE){
+                intent = new Intent(this, MultipleCheckActivity.class);
+            } else {
+                intent = new Intent(this, SingleRadioActivity.class);
+            }
+
             startActivity(intent);
         }
 

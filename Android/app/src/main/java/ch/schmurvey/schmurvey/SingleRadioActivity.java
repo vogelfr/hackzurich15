@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import static ch.schmurvey.schmurvey.ApplicationState.*;
@@ -20,9 +21,13 @@ public class SingleRadioActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_survey);
 
+        TextView textview = (TextView) findViewById(R.id.survey_single_choice_title);
+        textview.setText(ApplicationState.getCurrentQuestion().getQuestion());
         //initialize List and add items
 
-        ArrayAdapter myArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, testList);
+        String[] currentAnswers = ApplicationState.currentSurvey.questions.get(getSurveyIndex()).getAnswers();
+        ArrayAdapter myArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, currentAnswers);
+
         setListAdapter(myArrayAdapter);
 
         final ListView listview = getListView();
@@ -35,17 +40,27 @@ public class SingleRadioActivity extends ListActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ApplicationState.setSurveyIndex(ApplicationState.getSurveyIndex() - 1);
+    }
+
+    @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        String clickedElement = testList[position];
+        String clickedElement = ApplicationState.currentSurvey.questions.get(ApplicationState.getSurveyIndex()).getAnswers()[position];
         Toast.makeText(SingleRadioActivity.this, clickedElement+ " has been clicked.", Toast.LENGTH_SHORT).show();
 
         //// TODO save sate
-        if (getSurveyIndex() + 1 != surveyListLength) { //next question exists.
-            if (nextTestType == QuestionType.SINGLE_CHOICE ){
+        if (getSurveyIndex() + 1 != SurveyListLength) { //next question exists.
+            if (getTypeNextQuestion() == QuestionType.SINGLE_CHOICE ){
+
+                ApplicationState.incrementSurveyIndex();
                 Intent intent = new Intent(this, SingleRadioActivity.class);
                 startActivity(intent);
-            } else if (nextTestType == QuestionType.MULTIPLE_CHOICE) {
+            } else if (getTypeNextQuestion() == QuestionType.MULTIPLE_CHOICE) {
+
+                ApplicationState.incrementSurveyIndex();
                 Intent intent = new Intent(this, MultipleCheckActivity.class);
                 startActivity(intent);
             }

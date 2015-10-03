@@ -8,7 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import static ch.schmurvey.schmurvey.ApplicationState.SurveyListLength;
+import static ch.schmurvey.schmurvey.ApplicationState.getSurveyIndex;
+import static ch.schmurvey.schmurvey.ApplicationState.getTypeNextQuestion;
 
 public class MultipleCheckActivity extends ListActivity {
 
@@ -18,7 +23,12 @@ public class MultipleCheckActivity extends ListActivity {
         setContentView(R.layout.activity_single_survey_multiple_check);
 
 
-        ArrayAdapter myArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, ApplicationState.testList);
+        TextView textview = (TextView) findViewById(R.id.single_survey_multiple_choice);
+        textview.setText(ApplicationState.getCurrentQuestion().getQuestion());
+
+        String[] currentAnswers = ApplicationState.currentSurvey.questions.get(getSurveyIndex()).getAnswers();
+        ArrayAdapter myArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, currentAnswers);
+
         setListAdapter(myArrayAdapter);
     }
 
@@ -28,20 +38,23 @@ public class MultipleCheckActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-
-
-
-        String clickedElement = ApplicationState.testList[position];
-        Toast.makeText(this, clickedElement + " clicked. Type: " + ApplicationState.currentTestType, Toast.LENGTH_SHORT).show();
+        String clickedElement = ApplicationState.currentSurvey.questions.get(ApplicationState.getSurveyIndex()).getAnswers()[position];
+        Toast.makeText(this, clickedElement+ " has been clicked.", Toast.LENGTH_SHORT).show();
 
         //TODO save state
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ApplicationState.setSurveyIndex(ApplicationState.getSurveyIndex() - 1);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_single_survey_multiple_check, menu);
+        //getMenuInflater().inflate(R.menu.menu_single_survey_multiple_check, menu);
+        //hide menu
         return true;
     }
 
@@ -61,8 +74,23 @@ public class MultipleCheckActivity extends ListActivity {
     }
 
     public void submitButtonClicked (View view) {
-        Intent intent = new Intent(this, MultipleCheckActivity.class);
-        startActivity(intent);
-        //TODO start single or multiple choice.
+
+        // TODO save sate
+        if (getSurveyIndex() + 1 != SurveyListLength) { //next question exists.
+            if (getTypeNextQuestion() == ApplicationState.QuestionType.SINGLE_CHOICE ){
+
+                ApplicationState.incrementSurveyIndex();
+                Intent intent = new Intent(this, SingleRadioActivity.class);
+                startActivity(intent);
+            } else if (getTypeNextQuestion() == ApplicationState.QuestionType.MULTIPLE_CHOICE) {
+
+                ApplicationState.incrementSurveyIndex();
+                Intent intent = new Intent(this, MultipleCheckActivity.class);
+                startActivity(intent);
+            }
+        } else { //no more question.
+            //TODO result screen after final question?
+            Toast.makeText(this, "no more questions", Toast.LENGTH_SHORT).show();
+        }
     }
 }

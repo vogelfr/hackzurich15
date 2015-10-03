@@ -6,30 +6,48 @@ import android.app.Application;
  * Stores current information about Survey and what question user is on.
  */
 public class ApplicationState extends Application {
-    static int surveyIndex, surveyListLength;
-    static String[] testList = {"Survey 1", "Survey 2", "Yet another Survey", "even more options","test", "it goes on..."};
+    static int SurveyIndex, SurveyListLength;
+
 
     static public enum QuestionType {SINGLE_CHOICE, MULTIPLE_CHOICE}
     static public QuestionType currentTestType = QuestionType.MULTIPLE_CHOICE;
-    static public QuestionType nextTestType = QuestionType.MULTIPLE_CHOICE;
 
 
-    //static public Type nextType = Type.MULTIPLE_CHOICE;
+    static public Survey currentSurvey;
 
-    //TODO determine type of next Survey element.
+
 
     public static void setSurveyIndex(int surveyIndex) {
-        ApplicationState.surveyIndex = surveyIndex;
+        ApplicationState.SurveyIndex = surveyIndex;
     }
 
-    public static void incrementSurveyIndex(int surveyIndex) {
-        ApplicationState.surveyIndex++;
+    public static SurveyQuestion getCurrentQuestion(){
+
+        return currentSurvey.questions.get(getSurveyIndex());
+    }
+
+    public static void incrementSurveyIndex() {
+        ApplicationState.SurveyIndex++;
     }
 
     public static int getSurveyIndex() {
-        return surveyIndex;
+        return SurveyIndex;
     }
 
+    //returns type of next question, null if end of list.
+    public static QuestionType getTypeNextQuestion(){
+        if (SurveyIndex == 0) { //first question
+            return currentSurvey.questions.get(0).getQuestionType();
+        } else {
+            if (SurveyIndex + 1 < SurveyListLength){
+                //next element exists
+                return currentSurvey.questions.get(SurveyIndex +1).getQuestionType();
+            } else {
+                return null;
+            }
+        }
+
+    }
 
 
 }
