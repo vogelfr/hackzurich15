@@ -42,6 +42,10 @@
             android:name=".MultipleCheckActivity"
             android:label="@string/title_activity_single_survey_multiple_check" >
         </activity>
+        <activity
+            android:name=".SingleResultActivity"
+            android:label="@string/title_activity_single_result" >
+        </activity>
     </application>
 
 </manifest>
