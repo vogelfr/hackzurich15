@@ -31,7 +31,7 @@ public class ApplicationState extends Application {
     }
 
     public static int getSurveyIndex() {
-        return SurveyIndex;
+        return surveyIndex;
     }
 
     //returns type of next question, null if end of list.

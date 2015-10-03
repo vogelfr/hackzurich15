@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/AnswersMessage.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/EmptySurveyMessage.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/IMessage.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/RequestStatsMessage.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/RequestSurveyIdsMessage.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/RequestSurveyMessage.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/StatsMessage.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/backend/BackendWorker.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/common/AnswerOption.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/common/EmptySurvey.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/common/Question.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/common/QuestionAnswer.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/common/User.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/ch/schmurvey/schmurvey/util/ConnectionTester.java" charset="windows-1252" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

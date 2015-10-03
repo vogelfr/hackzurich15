@@ -1,8 +1,6 @@
 package ch.schmurvey.schmurvey;
 
 import android.util.Log;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**

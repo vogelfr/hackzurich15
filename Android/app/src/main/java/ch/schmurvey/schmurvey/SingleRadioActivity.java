@@ -27,7 +27,7 @@ public class SingleRadioActivity extends ListActivity {
         //initialize List and add items
 
         String[] currentAnswers = ApplicationState.currentSurvey.questions.get(getSurveyIndex()).getAnswers();
-        ArrayAdapter myArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, currentAnswers);
+        ArrayAdapter myArrayAdapter = new ArrayAdapter(SingleRadioActivity.this, android.R.layout.simple_list_item_single_choice, currentAnswers);
 
         setListAdapter(myArrayAdapter);
 
