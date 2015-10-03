@@ -1,13 +1,18 @@
 <resources>
     <string name="app_name">Schmurvey</string>
+    <string name="title_activity_single_survey_multiple_check">Fill out Schmurvey
+    </string>
+    <string name="title_activity_single_survey">Fill out Schmurvey</string>
+
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="own_schmurveys">Your Schmurveys</string>
     <string name="all_schmurveys">All Schmurveys</string>
-    <string name="title_activity_single_survey">SingleSurveyActivity</string>
+
     <string name="SingleSurveyTest">this is a test</string>
     <string name="show_all">Show all</string>
+
 
 
     <string name="title_activity_login">Sign in</string>
@@ -24,8 +29,6 @@
     <string name="error_no_password">No password was entered</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="title_activity_single_survey_multiple_check">SingleSurveyMultipleCheckActivity
-    </string>
     <string name="MultipleChoiceActivitySubmit">Submit</string>
 
     <!-- Strings related to Settings -->

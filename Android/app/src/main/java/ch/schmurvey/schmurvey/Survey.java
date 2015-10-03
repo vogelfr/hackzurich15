@@ -1,5 +1,7 @@
 package ch.schmurvey.schmurvey;
 
+import android.util.Log;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +32,10 @@ public class Survey {
     public void addQuestion(String SurveyQuestion, String[] answers, boolean MULTIPLE_CHOICE){
         SurveyQuestion question = new SurveyQuestion(SurveyQuestion, answers);
         if (MULTIPLE_CHOICE){
+            Log.d("QUESTION", "MULTIPLE_CHOICE set");
             question.setQuestionType(ApplicationState.QuestionType.MULTIPLE_CHOICE);
         } else {
+            Log.d("QUESTION", "SINGLE_CHOICE set");
             question.setQuestionType(ApplicationState.QuestionType.SINGLE_CHOICE);
         }
         this.questions.add(question);

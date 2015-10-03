@@ -3,6 +3,7 @@ package ch.schmurvey.schmurvey;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,15 +52,16 @@ public class SingleRadioActivity extends ListActivity {
         String clickedElement = ApplicationState.currentSurvey.questions.get(ApplicationState.getSurveyIndex()).getAnswers()[position];
         Toast.makeText(SingleRadioActivity.this, clickedElement+ " has been clicked.", Toast.LENGTH_SHORT).show();
 
+        Log.d("QUESTION", "surveyIndex = " + String.valueOf(getSurveyIndex()));
         //// TODO save sate
-        if (getSurveyIndex() + 1 != SurveyListLength) { //next question exists.
+        if (getSurveyIndex() + 1 != surveyListLength) { //next question exists.
             if (getTypeNextQuestion() == QuestionType.SINGLE_CHOICE ){
-
+                Log.d("QUESTION", "Next question is of type " + String.valueOf(ApplicationState.QuestionType.SINGLE_CHOICE));
                 ApplicationState.incrementSurveyIndex();
                 Intent intent = new Intent(this, SingleRadioActivity.class);
                 startActivity(intent);
             } else if (getTypeNextQuestion() == QuestionType.MULTIPLE_CHOICE) {
-
+                Log.d("QUESTION", "Next question is of type " + String.valueOf(ApplicationState.QuestionType.SINGLE_CHOICE));
                 ApplicationState.incrementSurveyIndex();
                 Intent intent = new Intent(this, MultipleCheckActivity.class);
                 startActivity(intent);
@@ -73,7 +75,7 @@ public class SingleRadioActivity extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_single_survey, menu);
+        getMenuInflater().inflate(R.menu.menu_single_survey, menu);
 
         //hide
         return true;

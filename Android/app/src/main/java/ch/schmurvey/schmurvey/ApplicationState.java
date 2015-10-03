@@ -1,12 +1,13 @@
 package ch.schmurvey.schmurvey;
 
 import android.app.Application;
+import android.util.Log;
 
 /**
  * Stores current information about Survey and what question user is on.
  */
 public class ApplicationState extends Application {
-    static int SurveyIndex, SurveyListLength;
+    static int surveyIndex, surveyListLength;
 
 
     static public enum QuestionType {SINGLE_CHOICE, MULTIPLE_CHOICE}
@@ -18,7 +19,7 @@ public class ApplicationState extends Application {
 
 
     public static void setSurveyIndex(int surveyIndex) {
-        ApplicationState.SurveyIndex = surveyIndex;
+        ApplicationState.surveyIndex = surveyIndex;
     }
 
     public static SurveyQuestion getCurrentQuestion(){
@@ -27,21 +28,23 @@ public class ApplicationState extends Application {
     }
 
     public static void incrementSurveyIndex() {
-        ApplicationState.SurveyIndex++;
+        ApplicationState.surveyIndex++;
     }
 
     public static int getSurveyIndex() {
-        return SurveyIndex;
+        return surveyIndex;
     }
 
     //returns type of next question, null if end of list.
     public static QuestionType getTypeNextQuestion(){
-        if (SurveyIndex == 0) { //first question
+        Log.d("NEXT_QUESTION", "surveyIndex == " + String.valueOf(surveyIndex));
+        if (surveyIndex == 0) { //first question
             return currentSurvey.questions.get(0).getQuestionType();
         } else {
-            if (SurveyIndex + 1 < SurveyListLength){
+            if (surveyIndex + 1 < surveyListLength){
                 //next element exists
-                return currentSurvey.questions.get(SurveyIndex +1).getQuestionType();
+                Log.d("NEXT_QUESTION", String.valueOf(currentSurvey.questions.get(surveyIndex +1).getQuestionType()));
+                return currentSurvey.questions.get(surveyIndex +1).getQuestionType();
             } else {
                 return null;
             }

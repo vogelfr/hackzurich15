@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("prefsName", PREFS_NAME);
             startActivity(intent);
         }
+
     }
 
     @Override
@@ -72,8 +78,10 @@ public class MainActivity extends AppCompatActivity {
             //TODO check next Question type
             Intent intent;
             if (ApplicationState.getTypeNextQuestion() == ApplicationState.QuestionType.MULTIPLE_CHOICE){
+                Log.d("QUESTION", "MultipleCheckActivity will be created.");
                 intent = new Intent(this, MultipleCheckActivity.class);
             } else {
+                Log.d("QUESTION", "SingleRadioActivity will be created.");
                 intent = new Intent(this, SingleRadioActivity.class);
             }
 
