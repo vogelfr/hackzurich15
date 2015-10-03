@@ -7,6 +7,7 @@ public class SurveyQuestion {
     public String question;
     public String[] answers;
     public ApplicationState.QuestionType questionType;
+    public boolean questionTypeBool;
 
     public SurveyQuestion(String question, String[] answers){
         this.question = question;

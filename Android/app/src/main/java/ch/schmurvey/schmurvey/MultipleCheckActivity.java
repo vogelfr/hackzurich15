@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static ch.schmurvey.schmurvey.ApplicationState.*;
 import static ch.schmurvey.schmurvey.ApplicationState.surveyListLength;
 import static ch.schmurvey.schmurvey.ApplicationState.getSurveyIndex;
 import static ch.schmurvey.schmurvey.ApplicationState.getTypeNextQuestion;
@@ -21,15 +22,19 @@ public class MultipleCheckActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_survey_multiple_check);
+        setContentView(R.layout.activity_survey_multiple_choice);
 
         TextView textview = (TextView) findViewById(R.id.single_survey_multiple_choice);
-        textview.setText(ApplicationState.getCurrentQuestion().getQuestion());
+        textview.setText(getCurrentQuestion().getQuestion());
 
-        String[] currentAnswers = ApplicationState.currentSurvey.questions.get(getSurveyIndex()).getAnswers();
+        String[] currentAnswers = currentSurvey.questions.get(getSurveyIndex()).getAnswers();
         ArrayAdapter myArrayAdapter = new ArrayAdapter(MultipleCheckActivity.this, android.R.layout.simple_list_item_multiple_choice, currentAnswers);
 
         setListAdapter(myArrayAdapter);
+
+        final ListView listview = getListView();
+        listview.setItemsCanFocus(false);
+        listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
     }
 
 
@@ -38,7 +43,7 @@ public class MultipleCheckActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        String clickedElement = ApplicationState.currentSurvey.questions.get(ApplicationState.getSurveyIndex()).getAnswers()[position];
+        String clickedElement = currentSurvey.questions.get(getSurveyIndex()).getAnswers()[position];
         Toast.makeText(this, clickedElement+ " has been clicked.", Toast.LENGTH_SHORT).show();
 
         //TODO save state
@@ -47,7 +52,7 @@ public class MultipleCheckActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        ApplicationState.setSurveyIndex(ApplicationState.getSurveyIndex() - 1);
+        decrementSurveyIndex();
     }
 
     @Override
@@ -76,16 +81,16 @@ public class MultipleCheckActivity extends ListActivity {
     public void submitButtonClicked (View view) {
 
         Log.d("QUESTION", "surveyIndex = " + String.valueOf(getSurveyIndex()));
-        // TODO save sate
+        // TODO save sate of pressed options.
         if (getSurveyIndex() + 1 != surveyListLength) { //next question exists.
-            if (getTypeNextQuestion() == ApplicationState.QuestionType.SINGLE_CHOICE ){
-                Log.d("QUESTION", "Next question is of type " + String.valueOf(ApplicationState.QuestionType.SINGLE_CHOICE));
-                ApplicationState.incrementSurveyIndex();
+            if (getTypeNextQuestion() == QuestionType.SINGLE_CHOICE ){
+                Log.d("QUESTION", "Next question is of type " + String.valueOf(QuestionType.SINGLE_CHOICE));
+                incrementSurveyIndex();
                 Intent intent = new Intent(this, SingleRadioActivity.class);
                 startActivity(intent);
-            } else if (getTypeNextQuestion() == ApplicationState.QuestionType.MULTIPLE_CHOICE) {
-                Log.d("QUESTION", "Next question is of type " + String.valueOf(ApplicationState.QuestionType.SINGLE_CHOICE));
-                ApplicationState.incrementSurveyIndex();
+            } else { // if (getTypeNextQuestion() == QuestionType.MULTIPLE_CHOICE) {
+                Log.d("QUESTION", "Next question is of type " + String.valueOf(QuestionType.SINGLE_CHOICE));
+                incrementSurveyIndex();
                 Intent intent = new Intent(this, MultipleCheckActivity.class);
                 startActivity(intent);
             }

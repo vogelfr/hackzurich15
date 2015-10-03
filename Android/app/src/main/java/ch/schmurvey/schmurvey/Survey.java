@@ -9,12 +9,14 @@ import java.util.ArrayList;
 public class Survey {
     public String surveyName, surveyAuthor;
     public ArrayList<SurveyQuestion> questions;
+    public int surveyLength;
 
 
     public Survey(String name, String author){
         this.surveyName = name;
         this.surveyAuthor = author;
         this.questions =  new ArrayList<>();
+        this.surveyLength = 0;
 
     }
 
@@ -36,6 +38,7 @@ public class Survey {
             question.setQuestionType(ApplicationState.QuestionType.SINGLE_CHOICE);
         }
         this.questions.add(question);
+        this.surveyLength++;
     }
 
 

@@ -7,11 +7,13 @@ import android.util.Log;
  * Stores current information about Survey and what question user is on.
  */
 public class ApplicationState extends Application {
-    static int surveyIndex, surveyListLength;
-
+    private static int surveyIndex;
+    static int surveyListLength;
+    //TODO set length when reading data in.
 
     static public enum QuestionType {SINGLE_CHOICE, MULTIPLE_CHOICE}
     static public QuestionType currentTestType = QuestionType.MULTIPLE_CHOICE;
+    static public boolean questionTypeMultipleChoice = true;
 
 
     static public Survey currentSurvey;
@@ -30,6 +32,14 @@ public class ApplicationState extends Application {
         ApplicationState.surveyIndex++;
     }
 
+    //decement current Question index, always bigger than 0
+    public static void decrementSurveyIndex(){
+        ApplicationState.surveyIndex--;
+        if(surveyIndex < 0){
+            surveyIndex = 0;
+        }
+    }
+
     public static int getSurveyIndex() {
         return surveyIndex;
     }
@@ -46,8 +56,6 @@ public class ApplicationState extends Application {
                 return null;
             }
         }
-
     }
-
 
 }

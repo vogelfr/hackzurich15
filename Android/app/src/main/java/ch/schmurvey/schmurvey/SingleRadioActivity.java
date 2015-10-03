@@ -20,7 +20,7 @@ public class SingleRadioActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_survey);
+        setContentView(R.layout.activity_survey_single_choice);
 
         TextView textview = (TextView) findViewById(R.id.survey_single_choice_title);
         textview.setText(ApplicationState.getCurrentQuestion().getQuestion());
@@ -43,7 +43,7 @@ public class SingleRadioActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        ApplicationState.setSurveyIndex(ApplicationState.getSurveyIndex() - 1);
+        ApplicationState.decrementSurveyIndex();
     }
 
     @Override
@@ -54,14 +54,17 @@ public class SingleRadioActivity extends ListActivity {
 
         Log.d("QUESTION", "surveyIndex = " + String.valueOf(getSurveyIndex()));
         //// TODO save sate
-        if (getSurveyIndex() + 1 != surveyListLength) { //next question exists.
-            if (getTypeNextQuestion() == QuestionType.SINGLE_CHOICE ){
-                Log.d("QUESTION", "Next question is of type " + String.valueOf(ApplicationState.QuestionType.SINGLE_CHOICE));
+        if (getSurveyIndex() != surveyListLength -1) { //next question exists.
+           // if (getTypeNextQuestion() == QuestionType.SINGLE_CHOICE ){
+            if (!ApplicationState.questionTypeMultipleChoice){
+
+                //SINGLE_CHOICE
                 ApplicationState.incrementSurveyIndex();
                 Intent intent = new Intent(this, SingleRadioActivity.class);
                 startActivity(intent);
-            } else if (getTypeNextQuestion() == QuestionType.MULTIPLE_CHOICE) {
-                Log.d("QUESTION", "Next question is of type " + String.valueOf(ApplicationState.QuestionType.SINGLE_CHOICE));
+            } else { //(getTypeNextQuestion() == QuestionType.MULTIPLE_CHOICE)
+
+                //MULTIPLE_CHOICE
                 ApplicationState.incrementSurveyIndex();
                 Intent intent = new Intent(this, MultipleCheckActivity.class);
                 startActivity(intent);

@@ -7,9 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Adapter;
-import android.widget.Button;
-import android.widget.ListView;
 
 import java.util.List;
 
@@ -31,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         testSurvey.addQuestion("Do you think this works", answer1 , false );
         testSurvey.addQuestion("Favourite colors?", answer2, true);
         testSurvey.addQuestion("Is this a multiple choice?", answer3, true);
+
         ApplicationState.currentSurvey = testSurvey;
+        ApplicationState.surveyListLength = ApplicationState.currentSurvey.questions.size();
         ApplicationState.setSurveyIndex(0);
         /*
         * end create test survey.
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.add_survey) {
-            //TODO check next question type
+
             Intent intent;
             if (ApplicationState.getTypeNextQuestion() == ApplicationState.QuestionType.MULTIPLE_CHOICE){
                 Log.d("QUESTION", "MultipleCheckActivity will be created.");
