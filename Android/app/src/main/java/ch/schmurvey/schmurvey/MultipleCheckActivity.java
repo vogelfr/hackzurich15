@@ -27,7 +27,7 @@ public class MultipleCheckActivity extends ListActivity {
         textview.setText(ApplicationState.getCurrentQuestion().getQuestion());
 
         String[] currentAnswers = ApplicationState.currentSurvey.questions.get(getSurveyIndex()).getAnswers();
-        ArrayAdapter myArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, currentAnswers);
+        ArrayAdapter myArrayAdapter = new ArrayAdapter(MultipleCheckActivity.this, android.R.layout.simple_list_item_multiple_choice, currentAnswers);
 
         setListAdapter(myArrayAdapter);
     }

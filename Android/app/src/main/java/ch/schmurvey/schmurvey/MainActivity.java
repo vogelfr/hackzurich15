@@ -26,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
         Survey testSurvey = new Survey("Test Survey", "Mr Testie");
         String[] answer1 = {"Yes", "No", "Not sure"};
         String[] answer2 = {"blue", "not blue", "purple"};
+        String[] answer3 = {"multiple choice1", "multiple2 ", "multiple 3"};
 
         testSurvey.addQuestion("Do you think this works", answer1 , false );
         testSurvey.addQuestion("Favourite colors?", answer2, true);
+        testSurvey.addQuestion("Is this a multiple choice?", answer3, true);
         ApplicationState.currentSurvey = testSurvey;
         ApplicationState.setSurveyIndex(0);
         /*
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.add_survey) {
-            //TODO check next Question type
+            //TODO check next question type
             Intent intent;
             if (ApplicationState.getTypeNextQuestion() == ApplicationState.QuestionType.MULTIPLE_CHOICE){
                 Log.d("QUESTION", "MultipleCheckActivity will be created.");

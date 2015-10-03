@@ -1,21 +1,17 @@
 package ch.schmurvey.schmurvey;
 
-
 /**
  * Created by Pascal on 03.10.2015.
  */
 public class SurveyQuestion {
-    public String Question;
+    public String question;
     public String[] answers;
     public ApplicationState.QuestionType questionType;
 
-
     public SurveyQuestion(String question, String[] answers){
-        this.Question = question;
+        this.question = question;
         this.answers = answers;
     }
-
-
 
     public void setQuestionType(ApplicationState.QuestionType questionType) {
         this.questionType = questionType;
@@ -31,7 +27,7 @@ public class SurveyQuestion {
     }
 
     public String getQuestion() {
-        return Question;
+        return question;
     }
 
     public String[] getAnswers() {

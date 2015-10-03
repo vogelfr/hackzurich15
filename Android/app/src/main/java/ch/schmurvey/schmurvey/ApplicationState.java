@@ -17,7 +17,6 @@ public class ApplicationState extends Application {
     static public Survey currentSurvey;
 
 
-
     public static void setSurveyIndex(int surveyIndex) {
         ApplicationState.surveyIndex = surveyIndex;
     }
@@ -32,18 +31,16 @@ public class ApplicationState extends Application {
     }
 
     public static int getSurveyIndex() {
-        return surveyIndex;
+        return SurveyIndex;
     }
 
     //returns type of next question, null if end of list.
     public static QuestionType getTypeNextQuestion(){
-        Log.d("NEXT_QUESTION", "surveyIndex == " + String.valueOf(surveyIndex));
         if (surveyIndex == 0) { //first question
             return currentSurvey.questions.get(0).getQuestionType();
         } else {
-            if (surveyIndex + 1 < surveyListLength){
-                //next element exists
-                Log.d("NEXT_QUESTION", String.valueOf(currentSurvey.questions.get(surveyIndex +1).getQuestionType()));
+            if (surveyIndex + 1 < surveyListLength){//next element exists
+
                 return currentSurvey.questions.get(surveyIndex +1).getQuestionType();
             } else {
                 return null;

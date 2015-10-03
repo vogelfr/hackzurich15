@@ -4,34 +4,33 @@ import android.util.Log;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Pascal on 03.10.2015.
  */
 public class Survey {
-    public String SurveyName, SurveyAuthor;
+    public String surveyName, surveyAuthor;
     public ArrayList<SurveyQuestion> questions;
 
 
     public Survey(String name, String author){
-        this.SurveyName = name;
-        this.SurveyAuthor = author;
+        this.surveyName = name;
+        this.surveyAuthor = author;
         this.questions =  new ArrayList<>();
 
     }
 
     public void setSurveyName(String surveyName) {
-        SurveyName = surveyName;
+        this.surveyName = surveyName;
     }
 
     public void setSurveyAuthor(String surveyAuthor) {
-        SurveyAuthor = surveyAuthor;
+        this.surveyAuthor = surveyAuthor;
     }
 
-    public void addQuestion(String SurveyQuestion, String[] answers, boolean MULTIPLE_CHOICE){
+    public void addQuestion(String SurveyQuestion, String[] answers, boolean multipleChoice){
         SurveyQuestion question = new SurveyQuestion(SurveyQuestion, answers);
-        if (MULTIPLE_CHOICE){
+        if (multipleChoice){
             Log.d("QUESTION", "MULTIPLE_CHOICE set");
             question.setQuestionType(ApplicationState.QuestionType.MULTIPLE_CHOICE);
         } else {
