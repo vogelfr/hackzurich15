@@ -8,11 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class SingleSurveyActivity extends ListActivity {
 
-    String[] testList = {"Survey 1", "Survey 2", "Yet another Survey"};
+    String[] testList = {"Survey 1", "Survey 2", "Yet another Survey", "even more options"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +22,23 @@ public class SingleSurveyActivity extends ListActivity {
 
         //initialize List and add items
 
-        ArrayAdapter myArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, testList);
-
+        ArrayAdapter myArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, testList);
         setListAdapter(myArrayAdapter);
+
+        final ListView listview = getListView();
+        listview.setItemsCanFocus(false);
+        listview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+
+
+
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         String clickedElement = testList[position];
-        Toast.makeText(SingleSurveyActivity.this,  "has been clicked.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SingleSurveyActivity.this, clickedElement+ " has been clicked.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
