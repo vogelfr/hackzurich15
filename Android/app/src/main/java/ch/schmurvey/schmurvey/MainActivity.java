@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.add_survey) {
-            Intent intent = new Intent(this, SingleSurveyActivity.class);
+            Intent intent = new Intent(this, SingleRadioActivity.class);
             startActivity(intent);
         }
 

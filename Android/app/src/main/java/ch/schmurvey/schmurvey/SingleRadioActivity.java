@@ -1,19 +1,19 @@
 package ch.schmurvey.schmurvey;
 
 import android.app.ListActivity;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class SingleSurveyActivity extends ListActivity {
+import static ch.schmurvey.schmurvey.ApplicationState.*;
 
-    String[] testList = {"Survey 1", "Survey 2", "Yet another Survey", "even more options"};
+public class SingleRadioActivity extends ListActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +38,29 @@ public class SingleSurveyActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         String clickedElement = testList[position];
-        Toast.makeText(SingleSurveyActivity.this, clickedElement+ " has been clicked.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SingleRadioActivity.this, clickedElement+ " has been clicked.", Toast.LENGTH_SHORT).show();
+
+        //// TODO save sate
+        if (getSurveyIndex() + 1 != surveyListLength) { //next question exists.
+            if (nextTestType == QuestionType.SINGLE_CHOICE ){
+                Intent intent = new Intent(this, SingleRadioActivity.class);
+                startActivity(intent);
+            } else if (nextTestType == QuestionType.MULTIPLE_CHOICE) {
+                Intent intent = new Intent(this, MultipleCheckActivity.class);
+                startActivity(intent);
+            }
+        } else { //no more question.
+            //TODO result screen after final question?
+            Toast.makeText(SingleRadioActivity.this, "no more questions", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_single_survey, menu);
+        //getMenuInflater().inflate(R.menu.menu_single_survey, menu);
+
+        //hide
         return true;
 
     }

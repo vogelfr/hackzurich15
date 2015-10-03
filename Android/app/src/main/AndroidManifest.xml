@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SingleSurveyActivity"
+            android:name=".SingleRadioActivity"
             android:label="@string/title_activity_single_survey" >
         </activity>
         <activity
@@ -27,6 +27,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ch.schmurvey.schmurvey.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MultipleCheckActivity"
+            android:label="@string/title_activity_single_survey_multiple_check" >
         </activity>
     </application>
 
