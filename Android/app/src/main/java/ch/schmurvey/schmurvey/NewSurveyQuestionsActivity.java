@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NewSurveyQuestionsActivity extends Activity {
 
@@ -110,16 +111,17 @@ public class NewSurveyQuestionsActivity extends Activity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            survey.addQuestion(question, (String[]) answerList.toArray(), multipleChoice.isChecked());
+            String[] answerListStrings = Arrays.copyOf(answerList.toArray(), answerList.size(), String[].class);
+            survey.addQuestion(question, answerListStrings, multipleChoice.isChecked());
             currentQuestion++;
             Intent intent;
             if (currentQuestion < numberOfQuestions) {
-                Toast.makeText(this, "Question submitted", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Question submitted", Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             } else {
-                Toast.makeText(this, "Question submitted", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Question submitted", Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, NewSurveyQuestionsActivity.class);
                 intent.putExtra("numberOfQuestions", numberOfQuestions);
                 intent.putExtra("currentQuestion", currentQuestion);
