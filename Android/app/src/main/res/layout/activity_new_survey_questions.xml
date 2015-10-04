@@ -85,6 +85,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/listViewAnswers"
         android:layout_toEndOf="@+id/answerInput"
-        style="@style/Button" />
+        style="@style/Button"
+        android:onClick="onSubmitClick" />
 
 </RelativeLayout>
