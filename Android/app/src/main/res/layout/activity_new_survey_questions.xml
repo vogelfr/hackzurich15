@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Add answer"
         android:id="@+id/button4"
-        android:onClick="onClick"
+        android:onClick="onAddQuestionClick"
         android:layout_below="@+id/questionInput"
         android:layout_alignEnd="@+id/listViewAnswers"
         style="@style/Button" />
