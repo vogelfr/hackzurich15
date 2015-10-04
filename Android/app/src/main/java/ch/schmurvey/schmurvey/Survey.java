@@ -1,12 +1,14 @@
 package ch.schmurvey.schmurvey;
 
 import android.util.Log;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Pascal on 03.10.2015.
  */
-public class Survey {
+public class Survey implements Serializable{
     public String surveyName, surveyAuthor;
     public ArrayList<SurveyQuestion> questions;
     public int surveyLength;

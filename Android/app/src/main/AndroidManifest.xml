@@ -3,10 +3,11 @@
     package="ch.schmurvey.schmurvey" >
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!--
+ <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
+    -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -45,6 +46,18 @@
         <activity
             android:name=".SingleResultActivity"
             android:label="@string/title_activity_single_result" >
+        </activity>
+        <activity
+            android:name=".NewSurveyActivity"
+            android:label="@string/title_activity_new_survey" >
+        </activity>
+        <activity
+            android:name=".NewSurveyQuestionsActivity"
+            android:label="@string/title_activity_new_survey_questions"
+            android:parentActivityName=".NewSurveyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.schmurvey.schmurvey.NewSurveyActivity" />
         </activity>
     </application>
 

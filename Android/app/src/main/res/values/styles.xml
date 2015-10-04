@@ -10,6 +10,19 @@
         <item name="android:background">#6960EC</item>
     </style>
 
+    <style name="EditText" parent="AppTheme">
+        <item name="android:textColorHint">#CCCCCC</item>
+    </style>
+
+    <style name="RadioButton" parent="AppTheme">
+        <item name="android:colorActivatedHighlight">#FFFFFF</item>
+    </style>
+
+    <style name="Button" parent="AppTheme">
+        <item name="android:textColor">#6960EC</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 
 
 </resources>

@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.Button;
+import android.widget.ListView;
 
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("PREFS", "firstTime = " + Boolean.toString(firstTime));
         Log.d("PREFS", "loggedIn = " + Boolean.toString(loggedIn));
 
-        if (!loggedIn) {
+        if (loggedIn) {
             Intent intent = new Intent(this, LoginActivity.class);
             intent.putExtra("loggedIn", loggedIn);
             intent.putExtra("firstTime", firstTime);
@@ -76,14 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.add_survey) {
 
-            Intent intent;
-            if (ApplicationState.getTypeNextQuestion() == ApplicationState.QuestionType.MULTIPLE_CHOICE){
-                Log.d("QUESTION", "MultipleCheckActivity will be created.");
-                intent = new Intent(this, MultipleCheckActivity.class);
-            } else {
-                Log.d("QUESTION", "SingleRadioActivity will be created.");
-                intent = new Intent(this, SingleRadioActivity.class);
-            }
+            Intent intent = new Intent(this, NewSurveyActivity.class);
 
             startActivity(intent);
         }

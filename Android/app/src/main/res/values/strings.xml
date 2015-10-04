@@ -3,6 +3,9 @@
     <string name="title_activity_single_survey_multiple_check">Fill out Schmurvey
     </string>
     <string name="title_activity_single_survey">Fill out Schmurvey</string>
+    <string name="title_activity_single_result">Results</string>
+    <string name="title_activity_new_survey">Create Schmurvey</string>
+    <string name="title_activity_new_survey_questions">Enter Question</string>
 
 
     <string name="hello_world">Hello world!</string>
@@ -36,5 +39,25 @@
     <string name="title_activity_settings">Settings</string>
     <string name="change_username">Change Username</string>
     <string name="change_password">Change Password</string>
-    <string name="title_activity_single_result">SingleResultActivity</string>
+
+    <string-array name="numbers_short">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="numbers_long">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 </resources>
