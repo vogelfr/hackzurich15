@@ -3,6 +3,7 @@ package ch.schmurvey.schmurvey;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -72,7 +73,8 @@ public class NewSurveyActivity extends AppCompatActivity implements AdapterView.
         Survey survey = new Survey(title.getText().toString(), "Username");
 
         Intent intent = new Intent(this, NewSurveyQuestionsActivity.class);
-        intent.putExtra("numberOfQuestions", spinnerSelected);
+        intent.putExtra("numberOfQuestions", spinnerSelected+1);
+        Log.d("QUESTION", String.valueOf(spinnerSelected));
         intent.putExtra("survey", survey);
         intent.putExtra("currentQuestion", 0);
         startActivity(intent);

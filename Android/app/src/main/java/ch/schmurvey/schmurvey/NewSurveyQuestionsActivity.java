@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -115,7 +116,8 @@ public class NewSurveyQuestionsActivity extends Activity {
             survey.addQuestion(question, answerListStrings, multipleChoice.isChecked());
             currentQuestion++;
             Intent intent;
-            if (currentQuestion < numberOfQuestions) {
+            Log.d("current, number", String.valueOf(currentQuestion) + " " + String.valueOf(numberOfQuestions));
+            if (currentQuestion >= numberOfQuestions) {
                 Toast.makeText(this, "Question submitted", Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

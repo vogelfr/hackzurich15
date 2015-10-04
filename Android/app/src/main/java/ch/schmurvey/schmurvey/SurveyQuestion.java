@@ -1,9 +1,11 @@
 package ch.schmurvey.schmurvey;
 
+import java.io.Serializable;
+
 /**
  * Created by Pascal on 03.10.2015.
  */
-public class SurveyQuestion {
+public class SurveyQuestion implements Serializable {
     public String question;
     public String[] answers;
     public ApplicationState.QuestionType questionType;
